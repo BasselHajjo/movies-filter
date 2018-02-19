@@ -16,3 +16,13 @@ then use the green button that says "Clone or download"
 
 ---
 
+**What the app do and how it work ?**
+
+* The app search for movies pased on the rating
+* The app uses IMDb databases to fitch the data
+* The app calculate the average rating for the searched movies
+* To use the app :
+1. There's 4 buttons on the top , you can choose the rating field you want to search in : 
+* Excellent (>=8.5), Very Good (>=8), Good (<8)
+2. In the next line there's a input field to type in the movie name.
+3. Then when you click on search , the app will fitch the data from IMDb and filter it accurding to the rating field you chose and it will show you the average rating for the searched movies and a list of all the movies contens the searching input.
