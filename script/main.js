@@ -1,5 +1,10 @@
 const moviesURL = 'https://gist.githubusercontent.com/pankaj28843/08f397fcea7c760a99206bcb0ae8d0a4/raw/02d8bc9ec9a73e463b13c44df77a87255def5ab9/movies.json';
 const loadMovies = document.querySelector('#load');
+const loadExcellentMovies = document.querySelector('#excellent')
+const loadVeryGoodMovies = document.querySelector('#very')
+const loadGoodMovies = document.querySelector('#good')
+const searchField = document.querySelector('#searchField')
+const searchButton = document.querySelector('#search')
 const moviesList = document.querySelector('ul');
 
 function fetchJSONDataNew(url) {
@@ -52,7 +57,20 @@ fetchJSONDataNew(moviesURL).then(movies =>{
     
     /*Add 4 radio buttons for each tag + All tag (All, Excellent, Very Good, Good) and filter the movies based on the tag selected.*/
     
+    loadExcellentMovies.addEventListener('click',function(){
+        moviesList.innerHTML = "";
+        moviesFilter(movies,'Excellent');
+    });
     
+    loadVeryGoodMovies.addEventListener('click',function(){
+        moviesList.innerHTML = "";
+        moviesFilter(movies,'Very Good');
+    });
+    
+    loadGoodMovies.addEventListener('click',function(){
+        moviesList.innerHTML = "";
+        moviesFilter(movies,'Good');
+    });
     
 });
 
@@ -61,3 +79,12 @@ fetchJSONDataNew(moviesURL).then(movies =>{
 
 
 
+function moviesFilter(json,arg){
+    json.filter(movie =>{
+            return movie.tag === arg;
+        }).map(movie =>{
+            const moviesRating = document.createElement('li');
+            moviesList.appendChild(moviesRating);
+            moviesRating.innerHTML = movie.title;
+        });
+}
