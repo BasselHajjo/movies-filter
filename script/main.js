@@ -7,6 +7,8 @@ const searchField = document.querySelector('#searchField')
 const searchButton = document.querySelector('#search')
 const moviesList = document.querySelector('ul');
 
+
+
 function fetchJSONDataNew(url) {
     const promise = new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
@@ -53,7 +55,21 @@ fetchJSONDataNew(moviesURL).then(movies =>{
     
     /*Add a input field, and a button to perform search. Use .filter method on arrays to filter on the titles.*/
     
-
+    searchButton.addEventListener('click',function(){
+        moviesList.innerHTML = "";
+        const searchValue = searchField.value.toLowerCase().trim();
+        if(movie => movie.title.toLowerCase().includes(searchValue)){
+            movies.filter(movie => movie.title.toLowerCase().includes(searchValue)).map(movie =>{
+            const moviesRating = document.createElement('li');
+            moviesList.appendChild(moviesRating);
+            moviesRating.innerHTML = movie.title;
+        });
+        }/*else if(searchValue = "" || movie => movie.title.toLowerCase().includes(searchValue) == false){
+            const badResult = document.createElement("h3");
+            moviesList.appendChild(badResult);
+            badResult.innerHTML = "Enter a valid name please!";
+        }*/
+            });
     
     /*Add 4 radio buttons for each tag + All tag (All, Excellent, Very Good, Good) and filter the movies based on the tag selected.*/
     
@@ -88,3 +104,7 @@ function moviesFilter(json,arg){
             moviesRating.innerHTML = movie.title;
         });
 }
+
+searchField.addEventListener('keyup',function(){
+     moviesList.innerHTML = "";                        
+});
