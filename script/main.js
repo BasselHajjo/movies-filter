@@ -58,17 +58,18 @@ fetchJSONDataNew(moviesURL).then(movies =>{
     searchButton.addEventListener('click',function(){
         moviesList.innerHTML = "";
         const searchValue = searchField.value.toLowerCase().trim();
-        if(movie => movie.title.toLowerCase().includes(searchValue)){
-            movies.filter(movie => movie.title.toLowerCase().includes(searchValue)).map(movie =>{
+        let movieMach = movie => movie.title.toLowerCase().includes(searchValue)
+        if(movieMach){
+            movies.filter(movieMach).map(movie =>{
             const moviesRating = document.createElement('li');
             moviesList.appendChild(moviesRating);
             moviesRating.innerHTML = movie.title;
         });
-        }/*else if(searchValue = "" || movie => movie.title.toLowerCase().includes(searchValue) == false){
+        }else if(!movieMach || searchValue != ""){
             const badResult = document.createElement("h3");
             moviesList.appendChild(badResult);
             badResult.innerHTML = "Enter a valid name please!";
-        }*/
+        }
             });
     
     /*Add 4 radio buttons for each tag + All tag (All, Excellent, Very Good, Good) and filter the movies based on the tag selected.*/
@@ -87,6 +88,10 @@ fetchJSONDataNew(moviesURL).then(movies =>{
         moviesList.innerHTML = "";
         moviesFilter(movies,'Good');
     });
+    
+    /*Display only the movies in the list which match the two filter criterion above.*/
+    
+    
     
 });
 
