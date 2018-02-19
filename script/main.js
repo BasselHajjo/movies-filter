@@ -53,7 +53,7 @@ fetchJSONDataNew(moviesURL).then(movies =>{
     
     /*Add a input field, and a button to perform search. Use .filter method on arrays to filter on the titles.*/
     
-    
+
     
     /*Add 4 radio buttons for each tag + All tag (All, Excellent, Very Good, Good) and filter the movies based on the tag selected.*/
     
