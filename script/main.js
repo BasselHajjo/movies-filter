@@ -51,10 +51,31 @@ fetchJSONDataNew(moviesURL).then(movies =>{
             moviesList.appendChild(allMovies);
             allMovies.innerHTML = movie.title;
         });
+        findAMovie(0);  //I did't know how to use all the arguments instead of tag...
     });
     
     /*Add a input field, and a button to perform search. Use .filter method on arrays to filter on the titles.*/
     
+    function findAMovie(tag){
+        if(tag){
+    const movieTag = movies.filter(movie => movie.tag === tag);
+    searchButton.addEventListener('click',function(){
+        moviesList.innerHTML = "";
+        const searchValue = searchField.value.toLowerCase().trim();
+        let filteredMovies = movieTag.filter(movie => movie.title.toLowerCase().includes(searchValue));
+        if(filteredMovies.length >= 1 && searchValue.length > 0){
+            filteredMovies.map(movie =>{
+            const moviesRating = document.createElement('li');
+            moviesList.appendChild(moviesRating);
+            moviesRating.innerHTML = movie.title;
+        });
+        }else if(filteredMovies.length < 1 || searchValue.length <= 0){
+            const badResult = document.createElement("h3");
+            moviesList.appendChild(badResult);
+            badResult.innerHTML = "&#9940 Enter a valid name please !";
+        }
+            });            
+        }else if(tag == 0){
     searchButton.addEventListener('click',function(){
         moviesList.innerHTML = "";
         const searchValue = searchField.value.toLowerCase().trim();
@@ -70,23 +91,28 @@ fetchJSONDataNew(moviesURL).then(movies =>{
             moviesList.appendChild(badResult);
             badResult.innerHTML = "&#9940 Enter a valid name please !";
         }
-            });
+            });            
+        };
+        };
     
     /*Add 4 radio buttons for each tag + All tag (All, Excellent, Very Good, Good) and filter the movies based on the tag selected.*/
     
     loadExcellentMovies.addEventListener('click',function(){
         moviesList.innerHTML = "";
         moviesFilter(movies,'Excellent');
+        findAMovie('Excellent');
     });
     
     loadVeryGoodMovies.addEventListener('click',function(){
         moviesList.innerHTML = "";
         moviesFilter(movies,'Very Good');
+        findAMovie('Very Good');
     });
     
     loadGoodMovies.addEventListener('click',function(){
         moviesList.innerHTML = "";
         moviesFilter(movies,'Good');
+        findAMovie('Good');
     });
     
     /*Display only the movies in the list which match the two filter criterion above.*/
