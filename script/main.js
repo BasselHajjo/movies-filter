@@ -58,17 +58,17 @@ fetchJSONDataNew(moviesURL).then(movies =>{
     searchButton.addEventListener('click',function(){
         moviesList.innerHTML = "";
         const searchValue = searchField.value.toLowerCase().trim();
-        let movieMach = movie => movie.title.toLowerCase().includes(searchValue)
-        if(movieMach){
-            movies.filter(movieMach).map(movie =>{
+        let filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchValue));
+        if(filteredMovies.length >= 1 && searchValue.length > 0){
+            filteredMovies.map(movie =>{
             const moviesRating = document.createElement('li');
             moviesList.appendChild(moviesRating);
             moviesRating.innerHTML = movie.title;
         });
-        }else if(!movieMach || searchValue != ""){
+        }else if(filteredMovies.length < 1 || searchValue.length <= 0){
             const badResult = document.createElement("h3");
             moviesList.appendChild(badResult);
-            badResult.innerHTML = "Enter a valid name please!";
+            badResult.innerHTML = "&#9940 Enter a valid name please !";
         }
             });
     
