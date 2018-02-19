@@ -40,7 +40,7 @@ fetchJSONDataNew(moviesURL).then(movies =>{
            movie['tag'] = 'Good'
        }
     });
-    console.log(movies);
+    //console.log(movies);
     
     /*Render all the movies as a list*/
     
@@ -49,7 +49,7 @@ fetchJSONDataNew(moviesURL).then(movies =>{
         movies.map(movie =>{
             const allMovies = document.createElement('li');
             moviesList.appendChild(allMovies);
-            allMovies.innerHTML = movie.title;
+            allMovies.innerHTML = movie.title + " " + `<span>${movie.year} Reating is ${movie.rating}</span>`;
         });
         findAMovie(0);  //I did't know how to use all the arguments instead of tag...
     });
@@ -67,7 +67,7 @@ fetchJSONDataNew(moviesURL).then(movies =>{
             filteredMovies.map(movie =>{
             const moviesRating = document.createElement('li');
             moviesList.appendChild(moviesRating);
-            moviesRating.innerHTML = movie.title;
+            moviesRating.innerHTML = movie.title + " " + `<span>${movie.year} Reating is ${movie.rating}</span>`;
         });
         }else if(filteredMovies.length < 1 || searchValue.length <= 0){
             const badResult = document.createElement("h3");
@@ -84,7 +84,7 @@ fetchJSONDataNew(moviesURL).then(movies =>{
             filteredMovies.map(movie =>{
             const moviesRating = document.createElement('li');
             moviesList.appendChild(moviesRating);
-            moviesRating.innerHTML = movie.title;
+            moviesRating.innerHTML = movie.title + " " + `<span>${movie.year} Reating is ${movie.rating}</span>`;
         });
         }else if(filteredMovies.length < 1 || searchValue.length <= 0){
             const badResult = document.createElement("h3");

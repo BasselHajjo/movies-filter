@@ -20,3 +20,73 @@ header{
     }
 }
 
+span{
+    font-size: 12px;
+}
+
+.loading{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    button{
+        width: 20%;
+        margin-left: 4%;
+        margin-bottom: 15px;
+        padding: 5px;
+        transition-duration: .4s;
+        font-family: "Ubuntu";
+        border: solid 1px red;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: white;
+        font-weight: bold;
+        &:hover{
+            background-color: red;
+            color: white;
+        }
+    }
+}
+
+.searching{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 10px 5%;
+    button{
+        width: 47%;
+        padding: 5px;
+        transition-duration: .4s;
+        font-family: "Ubuntu";
+        border: solid 1px red;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: white;
+        font-weight: bold;
+        &:hover{
+            background-color: red;
+            color: white;
+        } 
+    }
+    input{
+        width: 47%;
+        margin-right: 6%;
+        padding: 5px;
+        font-family: "Ubuntu";
+        border: solid 1px red;
+        border-radius: 10px;
+        
+    }
+}
+
+ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    li{
+        list-style: none;
+        margin-left: 20px;
+    }
+}
+
+
+
+
